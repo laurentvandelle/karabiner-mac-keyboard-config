@@ -2288,7 +2288,8 @@
                                             "^org\\.gnu\\.AquamacsEmacs$",
                                             "^org\\.gnu\\.Aquamacs$",
                                             "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.todesktop\\.230313mzl4w4u92$",
+                                            "^com\\.anthropic\\.claudefordesktop$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -5408,7 +5409,8 @@
                                             "^org\\.gnu\\.AquamacsEmacs$",
                                             "^org\\.gnu\\.Aquamacs$",
                                             "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.todesktop\\.230313mzl4w4u92$",
+                                            "^com\\.anthropic\\.claudefordesktop$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
