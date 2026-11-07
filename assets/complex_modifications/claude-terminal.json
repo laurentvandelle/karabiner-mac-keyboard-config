@@ -1,0 +1,64 @@
+{
+  "title": "Personal keys",
+  "rules": [
+    {
+      "description": "Claude desktop terminal to ctrl + ù or cmd + ù",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            },
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "modifiers": [
+                "left_command"
+              ],
+              "key_code": "j"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.anthropic\\.claudefordesktop$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ]
+            },
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "modifiers": [
+                "left_command"
+              ],
+              "key_code": "j"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.anthropic\\.claudefordesktop$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
