@@ -1,5 +1,6 @@
 import { createBracketsJsonFile } from '../rules/brackets';
 import { createClaudeChangesJsonFile } from '../rules/claude-changes';
+import { createClaudeNewSessionJsonFile } from '../rules/claude-new-session';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
 import { createKeychronB1ProJsonFile } from '../rules/keychron-b1-pro';
@@ -32,6 +33,8 @@ export enum KarabinerKeyCodes {
   J = 'j',
   I = 'i',
   D = 'd',
+  T = 't',
+  N = 'n',
 }
 
 export enum Applications {
@@ -60,6 +63,7 @@ export enum jsonFileNames {
   KEYCHRON_B1_PRO = 'keychron-b1-pro',
   CLAUDE_TERMINAL = 'claude-terminal',
   CLAUDE_CHANGES = 'claude-changes',
+  CLAUDE_NEW_SESSION = 'claude-new-session',
 }
 
 export const jsonFiles: Record<string, Karabiner> = {
@@ -69,6 +73,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'keychron-b1-pro': createKeychronB1ProJsonFile(),
   'claude-terminal': createClaudeTerminalJsonFile(),
   'claude-changes': createClaudeChangesJsonFile(),
+  'claude-new-session': createClaudeNewSessionJsonFile(),
 };
 
 export type Karabiner = {
