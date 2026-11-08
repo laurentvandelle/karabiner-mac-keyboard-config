@@ -1,0 +1,67 @@
+{
+  "title": "Personal keys",
+  "rules": [
+    {
+      "description": "Claude desktop changes to ctrl + I or ctrl + shift + I",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            },
+            "key_code": "i"
+          },
+          "to": [
+            {
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ],
+              "key_code": "d"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.anthropic\\.claudefordesktop$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            "key_code": "i"
+          },
+          "to": [
+            {
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ],
+              "key_code": "d"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.anthropic\\.claudefordesktop$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

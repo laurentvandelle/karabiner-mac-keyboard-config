@@ -1,4 +1,5 @@
 import { createBracketsJsonFile } from '../rules/brackets';
+import { createClaudeChangesJsonFile } from '../rules/claude-changes';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
 import { createKeychronB1ProJsonFile } from '../rules/keychron-b1-pro';
@@ -29,6 +30,8 @@ export enum KarabinerKeyCodes {
   INFERIEUR = 'non_us_backslash',
   U_ACCENT_GRAVE = 'quote',
   J = 'j',
+  I = 'i',
+  D = 'd',
 }
 
 export enum Applications {
@@ -56,6 +59,7 @@ export enum jsonFileNames {
   FIREFOX_REDO = 'firefox-redo',
   KEYCHRON_B1_PRO = 'keychron-b1-pro',
   CLAUDE_TERMINAL = 'claude-terminal',
+  CLAUDE_CHANGES = 'claude-changes',
 }
 
 export const jsonFiles: Record<string, Karabiner> = {
@@ -64,6 +68,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'firefox-redo': createFirefoxRedoJsonFile(),
   'keychron-b1-pro': createKeychronB1ProJsonFile(),
   'claude-terminal': createClaudeTerminalJsonFile(),
+  'claude-changes': createClaudeChangesJsonFile(),
 };
 
 export type Karabiner = {
