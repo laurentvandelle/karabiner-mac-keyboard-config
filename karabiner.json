@@ -98,6 +98,32 @@
                         ]
                     },
                     {
+                        "description": "Claude desktop ctrl + C to cmd + C",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.anthropic\\.claudefordesktop$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Claude desktop changes to ctrl + I or ctrl + shift + I",
                         "manipulators": [
                             {
@@ -2382,8 +2408,7 @@
                                             "^org\\.gnu\\.AquamacsEmacs$",
                                             "^org\\.gnu\\.Aquamacs$",
                                             "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$",
-                                            "^com\\.anthropic\\.claudefordesktop$"
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -5503,8 +5528,7 @@
                                             "^org\\.gnu\\.AquamacsEmacs$",
                                             "^org\\.gnu\\.Aquamacs$",
                                             "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$",
-                                            "^com\\.anthropic\\.claudefordesktop$"
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
