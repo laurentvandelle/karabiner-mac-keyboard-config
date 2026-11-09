@@ -1,5 +1,6 @@
 import { createBracketsJsonFile } from '../rules/brackets';
 import { createClaudeChangesJsonFile } from '../rules/claude-changes';
+import { createClaudeInterruptJsonFile } from '../rules/claude-interrupt';
 import { createClaudeNewSessionJsonFile } from '../rules/claude-new-session';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
@@ -35,6 +36,7 @@ export enum KarabinerKeyCodes {
   D = 'd',
   T = 't',
   N = 'n',
+  C = 'c',
 }
 
 export enum Applications {
@@ -64,6 +66,7 @@ export enum jsonFileNames {
   CLAUDE_TERMINAL = 'claude-terminal',
   CLAUDE_CHANGES = 'claude-changes',
   CLAUDE_NEW_SESSION = 'claude-new-session',
+  CLAUDE_INTERRUPT = 'claude-interrupt',
 }
 
 export const jsonFiles: Record<string, Karabiner> = {
@@ -74,6 +77,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'claude-terminal': createClaudeTerminalJsonFile(),
   'claude-changes': createClaudeChangesJsonFile(),
   'claude-new-session': createClaudeNewSessionJsonFile(),
+  'claude-interrupt': createClaudeInterruptJsonFile(),
 };
 
 export type Karabiner = {
