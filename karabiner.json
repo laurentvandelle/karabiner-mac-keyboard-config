@@ -4,6 +4,75 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Notion ctrl + Tab toggles between the two last tabs",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^notion\\.id$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "name": "notion_tab_toggle",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "notion_tab_toggle",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^notion\\.id$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "name": "notion_tab_toggle",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "notion_tab_toggle",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Claude desktop terminal to ctrl + ù or cmd + ù, new terminal to ctrl + shift + ù",
                         "manipulators": [
                             {
