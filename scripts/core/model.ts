@@ -5,6 +5,7 @@ import { createClaudeNewSessionJsonFile } from '../rules/claude-new-session';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
 import { createKeychronB1ProJsonFile } from '../rules/keychron-b1-pro';
+import { createNotionTabJsonFile } from '../rules/notion-tab';
 import { createWindowsNumberKeysJsonFile } from '../rules/pc-replace-keys';
 
 export enum KarabinerModifierKeys {
@@ -37,11 +38,13 @@ export enum KarabinerKeyCodes {
   T = 't',
   N = 'n',
   C = 'c',
+  TAB = 'tab',
 }
 
 export enum Applications {
   FIREFOX = '^org\\.mozilla\\.firefox$',
   CLAUDE = '^com\\.anthropic\\.claudefordesktop$',
+  NOTION = '^notion\\.id$',
 }
 
 export type KarabinerDeviceIdentifier = {
@@ -67,6 +70,7 @@ export enum jsonFileNames {
   CLAUDE_CHANGES = 'claude-changes',
   CLAUDE_NEW_SESSION = 'claude-new-session',
   CLAUDE_INTERRUPT = 'claude-interrupt',
+  NOTION_TAB = 'notion-tab',
 }
 
 export const jsonFiles: Record<string, Karabiner> = {
@@ -78,6 +82,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'claude-changes': createClaudeChangesJsonFile(),
   'claude-new-session': createClaudeNewSessionJsonFile(),
   'claude-interrupt': createClaudeInterruptJsonFile(),
+  'notion-tab': createNotionTabJsonFile(),
 };
 
 export type Karabiner = {
@@ -93,7 +98,16 @@ export type Karabiner = {
 export type KarabinerManipulators = {
   type: 'basic';
   from: KarabinerModifier; // Shortcut you want
-  to: KarabinerModifier[]; // Character you want
+  to: (KarabinerModifier | KarabinerSetVariable)[]; // Character you want
+};
+
+export type KarabinerVariable = {
+  name: string;
+  value: number;
+};
+
+export type KarabinerSetVariable = {
+  set_variable: KarabinerVariable;
 };
 
 export type KarabinerModifier = {
