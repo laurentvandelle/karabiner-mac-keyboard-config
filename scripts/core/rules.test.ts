@@ -1,4 +1,4 @@
-import { firefoxRedoSample, keychronDeviceSwapSample } from '../tests/samples';
+import { firefoxRedoSample, keychronDeviceSwapSample, variableToggleSample } from '../tests/samples';
 import { KarabinerDevices, KarabinerKeyCodes, KarabinerModifierKeys } from './model';
 import { createRule } from './rules';
 
@@ -50,5 +50,33 @@ describe('rules', () => {
 
     // Then
     expect(rule).toEqual(keychronDeviceSwapSample());
+  });
+
+  it('should apply only when a variable is set, then set it', () => {
+    // Given
+    const assignShortcuts = [
+      {
+        modifiers: {
+          mandatory: [KarabinerModifierKeys.LEFT_CONTROL],
+        },
+        key_code: KarabinerKeyCodes.TAB,
+      },
+    ];
+    const assignKeys = [
+      {
+        modifiers: [KarabinerModifierKeys.LEFT_CONTROL],
+        key_code: KarabinerKeyCodes.TAB,
+      },
+    ];
+    // When
+    const rule = createRule({
+      assignShortcuts,
+      assignKeys,
+      onlyWhenVariable: { name: 'toggle', value: 0 },
+      setVariable: { name: 'toggle', value: 1 },
+    });
+
+    // Then
+    expect(rule).toEqual(variableToggleSample());
   });
 });

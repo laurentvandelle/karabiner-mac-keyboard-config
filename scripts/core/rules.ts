@@ -1,4 +1,11 @@
-import { Applications, Karabiner, KarabinerDeviceIdentifier, KarabinerManipulators, KarabinerModifier } from './model';
+import {
+  Applications,
+  Karabiner,
+  KarabinerDeviceIdentifier,
+  KarabinerManipulators,
+  KarabinerModifier,
+  KarabinerVariable,
+} from './model';
 
 // TODO: Regroupe in 1 file
 export function createJsonFilePLaceholder(title: string, description: string, manipulators: KarabinerManipulators[]): Karabiner {
@@ -11,6 +18,8 @@ export function createJsonFilePLaceholder(title: string, description: string, ma
  * @param assignKeys the shortcut you want to assign
  * @param onlyAppliesForThisApplications
  * @param onlyAppliesForTheseDevices
+ * @param onlyWhenVariable the rule applies only when this variable has this value
+ * @param setVariable variable set after the keys are sent
  * @returns
  */
 export function createRule({
@@ -18,18 +27,26 @@ export function createRule({
   assignKeys,
   onlyAppliesForThisApplications,
   onlyAppliesForTheseDevices,
+  onlyWhenVariable,
+  setVariable,
 }: {
   assignShortcuts: KarabinerModifier[];
   assignKeys: KarabinerModifier[];
   onlyAppliesForThisApplications?: Applications[];
   onlyAppliesForTheseDevices?: KarabinerDeviceIdentifier[];
+  onlyWhenVariable?: KarabinerVariable;
+  setVariable?: KarabinerVariable;
 }): KarabinerManipulators[] {
   return assignShortcuts.map((assignShortcut) => {
     return {
       type: 'basic',
       from: assignShortcut,
-      to: assignKeys,
-      conditions: createManipulatorsConditions({ onlyAppliesForThisApplications, onlyAppliesForTheseDevices }),
+      to: setVariable ? [...assignKeys, { set_variable: setVariable }] : assignKeys,
+      conditions: createManipulatorsConditions({
+        onlyAppliesForThisApplications,
+        onlyAppliesForTheseDevices,
+        onlyWhenVariable,
+      }),
     };
   });
 }
@@ -37,9 +54,11 @@ export function createRule({
 function createManipulatorsConditions({
   onlyAppliesForThisApplications,
   onlyAppliesForTheseDevices,
+  onlyWhenVariable,
 }: {
   onlyAppliesForThisApplications?: Applications[];
   onlyAppliesForTheseDevices?: KarabinerDeviceIdentifier[];
+  onlyWhenVariable?: KarabinerVariable;
 }): any[] {
   const conditions: any[] = [];
   if (onlyAppliesForThisApplications) {
@@ -52,6 +71,13 @@ function createManipulatorsConditions({
     conditions.push({
       type: 'device_if',
       identifiers: onlyAppliesForTheseDevices,
+    });
+  }
+  if (onlyWhenVariable) {
+    conditions.push({
+      type: 'variable_if',
+      name: onlyWhenVariable.name,
+      value: onlyWhenVariable.value,
     });
   }
   return conditions;

@@ -62,3 +62,36 @@ export function firefoxRedoSample() {
     ],
   };
 }
+
+export function variableToggleSample() {
+  return [
+    {
+      type: 'basic',
+      from: {
+        modifiers: {
+          mandatory: ['left_control'],
+        },
+        key_code: 'tab',
+      },
+      to: [
+        {
+          modifiers: ['left_control'],
+          key_code: 'tab',
+        },
+        {
+          set_variable: {
+            name: 'toggle',
+            value: 1,
+          },
+        },
+      ],
+      conditions: [
+        {
+          type: 'variable_if',
+          name: 'toggle',
+          value: 0,
+        },
+      ],
+    },
+  ];
+}
