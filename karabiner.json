@@ -4,6 +4,101 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Personal-keys Claude desktop expanded terminal to ctrl + ù, terminal to cmd + ù, new terminal to ctrl + shift + ù",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    },
+                                    "key_code": "quote"
+                                },
+                                "to": [
+                                    {
+                                        "modifiers": [
+                                            "left_command"
+                                        ],
+                                        "key_code": "j"
+                                    },
+                                    {
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_shift"
+                                        ],
+                                        "key_code": "backslash"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.anthropic\\.claudefordesktop$"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    },
+                                    "key_code": "quote"
+                                },
+                                "to": [
+                                    {
+                                        "modifiers": [
+                                            "left_command"
+                                        ],
+                                        "key_code": "j"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.anthropic\\.claudefordesktop$"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control",
+                                            "left_shift"
+                                        ]
+                                    },
+                                    "key_code": "quote"
+                                },
+                                "to": [
+                                    {
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_shift"
+                                        ],
+                                        "key_code": "grave_accent_and_tilde"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.anthropic\\.claudefordesktop$"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Personal-keys Exchange {} and [] and add {} to external keys",
                         "manipulators": [
                             {
@@ -424,94 +519,6 @@
                                                 "product_id": 1819,
                                                 "is_keyboard": true
                                             }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Personal-keys Claude desktop terminal to ctrl + ù or cmd + ù, new terminal to ctrl + shift + ù",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    },
-                                    "key_code": "quote"
-                                },
-                                "to": [
-                                    {
-                                        "modifiers": [
-                                            "left_command"
-                                        ],
-                                        "key_code": "j"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.anthropic\\.claudefordesktop$"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command"
-                                        ]
-                                    },
-                                    "key_code": "quote"
-                                },
-                                "to": [
-                                    {
-                                        "modifiers": [
-                                            "left_command"
-                                        ],
-                                        "key_code": "j"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.anthropic\\.claudefordesktop$"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    },
-                                    "key_code": "quote"
-                                },
-                                "to": [
-                                    {
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_shift"
-                                        ],
-                                        "key_code": "grave_accent_and_tilde"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.anthropic\\.claudefordesktop$"
                                         ]
                                     }
                                 ]

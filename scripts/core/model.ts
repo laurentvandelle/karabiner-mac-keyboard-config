@@ -40,6 +40,7 @@ export enum KarabinerKeyCodes {
   N = 'n',
   C = 'c',
   TAB = 'tab',
+  ANTISLASH = 'backslash',
 }
 
 export enum Applications {
