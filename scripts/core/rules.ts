@@ -7,9 +7,19 @@ import {
   KarabinerVariable,
 } from './model';
 
-// TODO: Regroupe in 1 file
 export function createJsonFilePLaceholder(title: string, description: string, manipulators: KarabinerManipulators[]): Karabiner {
   return { title, rules: [{ description, manipulators }] };
+}
+
+/**
+ * Regroupe plusieurs fichiers en un seul document, donc une seule section dans Karabiner-Elements.
+ * Chaque nom de règle reçoit le préfixe, par exemple « Personal-keys Claude redo to ctrl + Y ».
+ */
+export function mergeJsonFiles(title: string, files: Karabiner[], prefix = ''): Karabiner {
+  return {
+    title,
+    rules: files.flatMap((file) => file.rules.map((rule) => ({ ...rule, description: `${prefix}${rule.description}` }))),
+  };
 }
 
 /**

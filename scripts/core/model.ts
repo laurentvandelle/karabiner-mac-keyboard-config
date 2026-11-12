@@ -75,6 +75,15 @@ export enum jsonFileNames {
   CLAUDE_REDO = 'claude-redo',
 }
 
+// Fichier unique importé dans Karabiner-Elements : une seule section « Personal keys »
+export const personalKeysFileName = 'personal-keys';
+export const personalKeysTitle = 'Personal keys';
+// Préfixe ajouté au nom de chaque règle générée, pour la repérer dans Karabiner-Elements
+export const personalKeysPrefix = 'Personal-keys ';
+
+// Règles générées mais jamais activées automatiquement dans karabiner.json
+export const rulesNotEnabledInProfile: jsonFileNames[] = [jsonFileNames.PC_REPLACE];
+
 export const jsonFiles: Record<string, Karabiner> = {
   'pc-replace-keys': createWindowsNumberKeysJsonFile(),
   brackets: createBracketsJsonFile(),
@@ -88,14 +97,14 @@ export const jsonFiles: Record<string, Karabiner> = {
   'claude-redo': createClaudeRedoJsonFile(),
 };
 
+export type KarabinerRule = {
+  description: string;
+  manipulators: KarabinerManipulators[];
+};
+
 export type Karabiner = {
   title: string;
-  rules: [
-    {
-      description: string;
-      manipulators: KarabinerManipulators[];
-    },
-  ];
+  rules: KarabinerRule[];
 };
 
 export type KarabinerManipulators = {
