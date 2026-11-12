@@ -1,16 +1,16 @@
 # Agent
 
-Tu modifies la configuration Karabiner de ce dépôt. Le TypeScript sous `scripts/` est la source de vérité des règles générées. `npm start` écrit le JSON correspondant dans `assets/complex_modifications/`. `karabiner.json` est le profil installé dans Karabiner-Elements, pas la sortie du générateur.
+Tu modifies la configuration Karabiner de ce dépôt. Le TypeScript sous `scripts/` est la source de vérité des règles générées. `npm start` regroupe toutes les règles dans `assets/complex_modifications/personal-keys.json` (une seule section « Personal keys » dans Karabiner-Elements), puis les active dans le profil sélectionné de `karabiner.json`. Chaque règle y apparaît sous le nom `Personal-keys <description>`.
 
 L'`AGENTS.md` le plus proche du fichier modifié prévaut sur celui-ci. Si un document contredit le code, signale l'écart et suis le code. Le fond est dans `docs/architecture.md` et `docs/bonnes-pratiques.md`.
 
 ## Commandes
 
 - `npm test` — Jest
-- `npm start` — régénère uniquement les JSON dont le nom est dans `jsonFileNames`
+- `npm start` — régénère `personal-keys.json` à partir de `jsonFileNames` et active les règles dans `karabiner.json`
 - `npm run verify` — `npm test`
 
-Après un changement dans `scripts/rules/` ou dans le registre : lance `npm start`, puis relis le diff des JSON concernés.
+Après un changement dans `scripts/rules/` ou dans le registre : lance `npm start`, puis relis le diff de `personal-keys.json` et de `karabiner.json`. N'édite pas `karabiner.json` à la main pour activer une règle générée.
 
 ## Routing
 
@@ -31,6 +31,13 @@ Après un changement dans `scripts/rules/` ou dans le registre : lance `npm star
 4. Pas d'import de `scripts/rules/*` en dehors de `scripts/core/model.ts`.
 5. Pas d'import entre fichiers de `scripts/rules/`.
 6. Ne pas renommer `createJsonFilePLaceholder`. Le `L` majuscule fait partie du nom exporté.
+
+## Nommage des règles
+
+- Dans Karabiner-Elements, chaque règle générée s'appelle `Personal-keys <NOM>`, par exemple `Personal-keys Claude redo to ctrl + Y`.
+- Le préfixe `Personal-keys ` est ajouté par `mergeJsonFiles` à partir de `personalKeysPrefix` (`scripts/core/model.ts`). Dans `scripts/rules/`, la `description` passée à `createJsonFilePLaceholder` ne contient que `<NOM>`, sans le préfixe.
+- `npm start` retire du profil les règles préfixées qui ne sont plus générées et l'ancienne version sans préfixe d'une règle générée. Renommer une règle ne laisse donc pas de doublon.
+- Ne pas utiliser le préfixe `Personal-keys ` pour une règle écrite à la main dans `karabiner.json` : `npm start` la supprimerait.
 
 ## Definition of done
 

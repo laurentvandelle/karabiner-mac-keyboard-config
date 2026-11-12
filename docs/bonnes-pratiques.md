@@ -41,9 +41,11 @@ Un fichier généré contient une seule entrée `rules`, et autant de manipulato
 
 `karabiner.json` est l'export du profil Karabiner-Elements. Il contient les règles générées déjà importées, et d'autres règles qui n'ont aucune source TypeScript (Home, End, raccourcis PC, etc.).
 
-Modifier une règle générée se fait dans `scripts/rules/`, puis `npm start`, puis un import du JSON dans Karabiner-Elements. Recoller le résultat dans `karabiner.json` depuis ici désynchronise le profil de l'application.
+Modifier une règle générée se fait dans `scripts/rules/`, puis `npm start`. `npm start` active la règle dans le profil sélectionné de `karabiner.json` (ajout en tête, ou remplacement sur place par `description`), et Karabiner-Elements recharge le fichier tout seul. Pas d'import manuel, pas d'édition à la main.
 
-`assets/complex_modifications/pc-shortcuts.json` et les fichiers préfixés par un timestamp ne sont pas dans `jsonFileNames`. Ce sont des JSON historiques. `npm start` ne doit pas les écraser.
+Les règles générées s'appellent `Personal-keys <NOM>` dans le profil. Renommer la `description` d'une règle remplace l'ancienne entrée : `npm start` retire les règles préfixées qui ne sont plus générées. Une règle écrite à la main ne doit pas porter ce préfixe. Une règle à ne pas activer va dans `rulesNotEnabledInProfile`.
+
+`assets/complex_modifications/pc-shortcuts.json` et les fichiers préfixés par un timestamp ne sont pas générés. Ce sont des JSON historiques. `npm start` ne doit pas les écraser.
 
 `automatic_backups/` contient les snapshots créés par Karabiner-Elements. Les lire peut aider à comprendre un ancien comportement. Ne pas les modifier, ne pas les supprimer.
 
