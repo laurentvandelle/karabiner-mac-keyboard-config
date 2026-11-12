@@ -2,6 +2,7 @@ import { createBracketsJsonFile } from '../rules/brackets';
 import { createClaudeChangesJsonFile } from '../rules/claude-changes';
 import { createClaudeInterruptJsonFile } from '../rules/claude-interrupt';
 import { createClaudeNewSessionJsonFile } from '../rules/claude-new-session';
+import { createClaudeRedoJsonFile } from '../rules/claude-redo';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
 import { createKeychronB1ProJsonFile } from '../rules/keychron-b1-pro';
@@ -71,6 +72,7 @@ export enum jsonFileNames {
   CLAUDE_NEW_SESSION = 'claude-new-session',
   CLAUDE_INTERRUPT = 'claude-interrupt',
   NOTION_TAB = 'notion-tab',
+  CLAUDE_REDO = 'claude-redo',
 }
 
 export const jsonFiles: Record<string, Karabiner> = {
@@ -83,6 +85,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'claude-new-session': createClaudeNewSessionJsonFile(),
   'claude-interrupt': createClaudeInterruptJsonFile(),
   'notion-tab': createNotionTabJsonFile(),
+  'claude-redo': createClaudeRedoJsonFile(),
 };
 
 export type Karabiner = {
