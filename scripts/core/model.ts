@@ -36,6 +36,7 @@ export enum KarabinerKeyCodes {
   J = 'j',
   I = 'i',
   D = 'd',
+  F = 'f',
   T = 't',
   N = 'n',
   C = 'c',

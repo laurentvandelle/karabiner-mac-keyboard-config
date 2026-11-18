@@ -574,7 +574,7 @@
       ]
     },
     {
-      "description": "Personal-keys Claude desktop changes to ctrl + I or ctrl + shift + I",
+      "description": "Personal-keys Claude desktop open folder to ctrl + I or ctrl + shift + I",
       "manipulators": [
         {
           "type": "basic",
@@ -592,7 +592,7 @@
                 "left_command",
                 "left_shift"
               ],
-              "key_code": "d"
+              "key_code": "f"
             }
           ],
           "conditions": [
@@ -621,7 +621,7 @@
                 "left_command",
                 "left_shift"
               ],
-              "key_code": "d"
+              "key_code": "f"
             }
           ],
           "conditions": [
