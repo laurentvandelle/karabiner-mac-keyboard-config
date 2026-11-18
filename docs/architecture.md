@@ -26,7 +26,7 @@ Une règle n'existe pour le générateur que si les deux entrées suivantes sont
 
 `scripts/main.ts` itère `Object.values(jsonFileNames)`, fusionne les règles dans `assets/complex_modifications/personal-keys.json`, et les active dans `karabiner.json`. Une règle listée dans `rulesNotEnabledInProfile` est générée mais pas activée.
 
-Aujourd'hui, ces règles sont enregistrées : `pc-replace-keys`, `brackets`, `firefox-redo`, `keychron-b1-pro`, `claude-terminal`, `claude-changes`, `claude-new-session`, `claude-interrupt`, `notion-tab`, `claude-redo`.
+Aujourd'hui, ces règles sont enregistrées : `pc-replace-keys`, `brackets`, `firefox-redo`, `keychron-b1-pro`, `claude-terminal`, `claude-changes`, `claude-open-folder`, `claude-new-session`, `claude-interrupt`, `notion-tab`, `claude-redo`.
 
 `scripts/rules/pc-option-keys.ts` est un brouillon. Ne l'enregistre pas tant qu'il ne renvoie pas un `Karabiner`.
 

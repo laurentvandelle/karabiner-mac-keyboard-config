@@ -2,34 +2,26 @@ import { Applications, Karabiner, KarabinerKeyCodes, KarabinerModifierKeys } fro
 import { createJsonFilePLaceholder as createJsonFilePlaceholder, createRule } from '../core/rules';
 
 /**
- * Dans Claude desktop, ctrl + I ou ctrl + shift + I ouvre un dossier (envoie cmd + shift + F).
- * ctrl + shift + I n'atteint plus Claude desktop.
+ * Dans Claude desktop, ctrl + B ouvre les changements (envoie cmd + shift + D).
+ * ctrl + B n'envoie plus cmd + B (gras PC-Style) dans Claude desktop.
  */
 export function createClaudeChangesJsonFile(): Karabiner {
-  const openFolder = createRule({
+  const openChanges = createRule({
     assignShortcuts: [
       {
         modifiers: {
           mandatory: [KarabinerModifierKeys.LEFT_CONTROL],
         },
-        key_code: KarabinerKeyCodes.I,
-      },
-      {
-        modifiers: {
-          mandatory: [KarabinerModifierKeys.LEFT_CONTROL, KarabinerModifierKeys.LEFT_SHIFT],
-        },
-        key_code: KarabinerKeyCodes.I,
+        key_code: KarabinerKeyCodes.B,
       },
     ],
     assignKeys: [
       {
         modifiers: [KarabinerModifierKeys.LEFT_COMMAND, KarabinerModifierKeys.LEFT_SHIFT],
-        key_code: KarabinerKeyCodes.F,
+        key_code: KarabinerKeyCodes.D,
       },
     ],
     onlyAppliesForThisApplications: [Applications.CLAUDE],
   });
-  return createJsonFilePlaceholder('Personal keys', 'Claude desktop open folder to ctrl + I or ctrl + shift + I', [
-    ...openFolder,
-  ]);
+  return createJsonFilePlaceholder('Personal keys', 'Claude desktop changes to ctrl + B', [...openChanges]);
 }

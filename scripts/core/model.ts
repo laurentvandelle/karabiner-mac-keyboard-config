@@ -2,6 +2,7 @@ import { createBracketsJsonFile } from '../rules/brackets';
 import { createClaudeChangesJsonFile } from '../rules/claude-changes';
 import { createClaudeInterruptJsonFile } from '../rules/claude-interrupt';
 import { createClaudeNewSessionJsonFile } from '../rules/claude-new-session';
+import { createClaudeOpenFolderJsonFile } from '../rules/claude-open-folder';
 import { createClaudeRedoJsonFile } from '../rules/claude-redo';
 import { createClaudeTerminalJsonFile } from '../rules/claude-terminal';
 import { createFirefoxRedoJsonFile } from '../rules/firefox-redo';
@@ -34,6 +35,7 @@ export enum KarabinerKeyCodes {
   INFERIEUR = 'non_us_backslash',
   U_ACCENT_GRAVE = 'quote',
   J = 'j',
+  B = 'b',
   I = 'i',
   D = 'd',
   F = 'f',
@@ -71,6 +73,7 @@ export enum jsonFileNames {
   KEYCHRON_B1_PRO = 'keychron-b1-pro',
   CLAUDE_TERMINAL = 'claude-terminal',
   CLAUDE_CHANGES = 'claude-changes',
+  CLAUDE_OPEN_FOLDER = 'claude-open-folder',
   CLAUDE_NEW_SESSION = 'claude-new-session',
   CLAUDE_INTERRUPT = 'claude-interrupt',
   NOTION_TAB = 'notion-tab',
@@ -93,6 +96,7 @@ export const jsonFiles: Record<string, Karabiner> = {
   'keychron-b1-pro': createKeychronB1ProJsonFile(),
   'claude-terminal': createClaudeTerminalJsonFile(),
   'claude-changes': createClaudeChangesJsonFile(),
+  'claude-open-folder': createClaudeOpenFolderJsonFile(),
   'claude-new-session': createClaudeNewSessionJsonFile(),
   'claude-interrupt': createClaudeInterruptJsonFile(),
   'notion-tab': createNotionTabJsonFile(),
